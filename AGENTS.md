@@ -13,7 +13,8 @@ Repository adalah sumber konteks; jangan bergantung pada ingatan chat lama. Kepu
 - Kerjakan satu task roadmap per sesi. Nyatakan task, input, batas perubahan, dan verifikasi sebelum mulai; STOP setelah laporan untuk review Decision Owner.
 - Approval arsitektur bukan izin otomatis memulai milestone berikutnya. Mulai task berikut hanya setelah instruksi eksplisit owner.
 - Minta approval sebelum perubahan besar: scope/acceptance criteria, stack, struktur utama, dependency/tool baru, integrasi eksternal, atau arah desain. Perbaikan rutin dalam task yang sudah diizinkan boleh dilanjutkan.
-- Jangan commit, push, menghubungkan layanan hosting, preview deploy, atau production deploy tanpa instruksi eksplisit untuk tindakan tersebut. Jangan menganggap approval dokumentasi sebagai izin tindakan Git/hosting.
+- Seluruh tindakan Git write dilakukan oleh Decision Owner. Codex hanya boleh menjalankan Git read-only untuk inspeksi; jangan menjalankan add, commit, push, merge, rebase, reset, checkout/switch branch, atau tindakan Git write lainnya, termasuk melalui perintah tidak langsung atau tool pihak ketiga. Approval implementasi tidak memberi izin Git write.
+- Menghubungkan layanan hosting, preview deploy, dan production deploy memerlukan approval owner tersendiri.
 - Jangan menginstal dependency atau menjalankan installer/hooks hanya karena disebut dalam roadmap. Ikuti izin task yang sedang aktif.
 - Jangan membuat generator, sumber produk JSON, atau framework rendering tanpa requirement nyata dan approval perubahan arsitektur.
 

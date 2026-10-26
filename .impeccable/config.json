@@ -1,0 +1,7 @@
+{
+  "telemetry": false,
+  "buildPath": "code",
+  "hook": {
+    "enabled": false
+  }
+}

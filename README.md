@@ -6,15 +6,19 @@ Website katalog satu halaman untuk mengenalkan produk dan membantu pengunjung me
 
 | Milestone | Status |
 | --- | --- |
-| D-000 — Business Discovery | Tiga dokumen tersedia; fakta, konten, aset, dan izin Dina tetap mengikuti status DRAFT/PENDING/BLOCKED masing-masing item. |
+| D-000 — Business Discovery | Dokumentasi selesai; validasi fakta dan izin Dina masih **PENDING**. Status DRAFT/PENDING/BLOCKED per item tetap berlaku. |
 | D-001 — Requirements & Sitemap | **APPROVED sebagai baseline requirements MVP** oleh Decision Owner pada sesi “D-001 Final Decision & D-002 Documentation Approval”. Approval tidak menyetujui otomatis item yang masih PENDING/BLOCKED dan bukan izin publikasi. |
-| D-002 — Technical Architecture | Arsitektur **APPROVED**; ADR **Accepted**. Lima dokumen D-002 disiapkan untuk review owner; penerimaan akhir hasil dokumentasi masih PENDING. |
-| D-003–D-019 | Belum dimulai. D-003 memerlukan instruksi owner setelah review D-002 dan pemeriksaan gate. |
-| Impeccable | Penggunaan disetujui; belum diinstal/diinisialisasi. Setup berada pada D-004. |
-| Source aplikasi dan pengujian runtime | Belum ada source website. Browser/E2E/performance **NOT RUN**; klasifikasi build/typecheck lihat test plan. |
+| D-002 — Technical Architecture | **ACCEPTED** oleh owner; ADR **Accepted** dan dokumentasi sudah tersimpan di GitHub. |
+| D-003 — Static Frontend Foundation | Implementasi selesai; commit dan push berhasil. Scaffold HTML/CSS tersedia untuk pengembangan internal. |
+| D-004 — Impeccable Setup | Instalasi dan init Impeccable **4.7.0** berhasil; hasil setup dan konfigurasi diterima owner berdasarkan review dokumen. Git handoff dilakukan oleh Decision Owner. |
+| D-005 — Design Tokens & Skeleton | Belum dimulai. |
+| D-006–D-019 | Belum dimulai. |
+| Source aplikasi dan pengujian runtime | `index.html` dan `assets/css/styles.css` tersedia. Browser/E2E/performance **NOT RUN**; klasifikasi build/typecheck lihat test plan. |
 | Publikasi | **BLOCKED** sampai konten/izin, verifikasi, dan gate rilis terpenuhi. |
 
 Label DRAFT serta arsitektur/approval PENDING dalam dokumen lama adalah catatan status saat dokumen ditulis. Keputusan owner di atas memperbarui status baseline D-001; keputusan arsitektur dijelaskan di ADR. Enam dokumen lama sengaja tidak diedit. Status item bisnis, aset, interaksi tambahan, dan izin yang belum disetujui tidak dinaikkan oleh pembaruan ini.
+
+Impeccable terpasang **project-scoped** untuk Codex; hooks dan telemetry proyek **disabled**. Engine lokal per platform di-ignore oleh Git, sehingga mungkin perlu disiapkan ulang setelah clone pada komputer berbeda. Periksa skill/engine yang tersedia dan ikuti approval setup yang berlaku; jangan mengaktifkan hooks atau mengubah konfigurasi global otomatis.
 
 ## Peta dokumen
 
@@ -30,6 +34,7 @@ Label DRAFT serta arsitektur/approval PENDING dalam dokumen lama adalah catatan 
 | [ADR 001](docs/adr/001-static-site.md) | Keputusan stack, alasan, alternatif, dan trade-off. |
 | [Architecture](docs/architecture.md) | Struktur, flow konten, serta adaptasi D-003–D-019. |
 | [Test plan](docs/test-plan.md) | Skenario verifikasi, evidence, dan empat release gates. |
+| [Product context](PRODUCT.md) | Konteks produk hasil Impeccable init; status fakta dan izin tetap merujuk inventaris. |
 
 Referensi roadmap: **Dina Cake Codex Execution Roadmap 2026**, bagian D-002–D-019 dan halaman 30–32 (Impeccable, design contract, release gates). PDF dibaca dari `C:/Users/User/Downloads/Dina_Cake_Codex_Execution_Roadmap_2026.pdf` pada sesi D-002; file tidak tersimpan dalam repository dan path tersebut tidak portabel. Kontrak teknis yang diadaptasi dicatat dalam architecture, bukan instruksi untuk langsung mengeksekusi PDF.
 
@@ -37,10 +42,10 @@ Referensi roadmap: **Dina Cake Codex Execution Roadmap 2026**, bagian D-002–D-
 
 1. Buka clone repository yang benar. Jalankan `git rev-parse --show-toplevel`, `git branch --show-current`, `git status --short`, dan `git log -1 --oneline`. Jangan menganggap branch selalu `main` atau clone sudah memuat pekerjaan terbaru.
 2. Baca AGENTS dan peta dokumen di atas; pulihkan status dari file aktual. Jika lima dokumen D-002 tidak ada, jangan menganggap keputusan sudah tercatat pada clone tersebut.
-3. Cocokkan file dengan handoff terbaru. Perubahan D-002 pada sesi ini belum di-commit/push; clone lain tidak otomatis mendapatkannya. Sinkronisasi dilakukan setelah owner memberi instruksi yang sesuai. Jangan reset perubahan lokal untuk menyamakan clone.
+3. Cocokkan file dengan handoff terbaru. D-002 dan D-003 sudah tersimpan di GitHub; pastikan hasil D-004 juga telah disinkronkan oleh owner sebelum menganggapnya tersedia di clone lain. Seluruh Git write dilakukan Decision Owner. Jangan reset perubahan lokal untuk menyamakan clone.
 4. PDF, foto, screenshot referensi, dan bukti izin di komputer lama mungkin tidak tersedia. Tandai input yang hilang PENDING; jangan menggantinya dengan asumsi. Gunakan PDF asli jika perlu meninjau kontrak yang tidak tercakup dokumentasi ini.
-5. Minta/ikuti instruksi satu task aktif, periksa dependency dan gate, lalu kerjakan hanya scope yang diizinkan. Langkah terdekat saat ini adalah review dokumentasi D-002, bukan scaffold otomatis.
+5. Periksa ketersediaan Impeccable dan engine lokal, lalu reload Codex bila diperlukan agar skill dikenali. Minta/ikuti instruksi satu task aktif dan periksa dependency serta gate; D-005 belum diizinkan untuk dimulai.
 
 ## Menjalankan website
 
-Belum ada aplikasi untuk dijalankan pada D-002. Setelah D-003 diizinkan, gunakan server HTTP statis lokal yang tersedia, terikat ke loopback; dokumentasikan tool, versi, command, dan URL yang benar-benar dipakai. Jangan memasang tool otomatis atau memakai `file://` sebagai satu-satunya bukti browser. Tidak ada command Next.js, instalasi framework, atau build generator untuk MVP ini.
+Scaffold D-003 dapat dilayani dengan server HTTP statis lokal yang tersedia, terikat ke loopback; dokumentasikan tool, versi, command, dan URL yang benar-benar dipakai. Jangan memasang tool otomatis atau memakai `file://` sebagai satu-satunya bukti browser. Scaffold belum siap dipublikasikan; paket publik kelak harus mengecualikan dokumentasi internal dan seluruh materi tanpa izin. Tidak ada command Next.js, instalasi framework, atau build generator untuk MVP ini.
