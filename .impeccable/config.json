@@ -3,5 +3,20 @@
   "buildPath": "code",
   "hook": {
     "enabled": false
+  },
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-10-27T04:19:53.462Z",
+        "reason": "Decision Owner menyetujui warna background #FFF8EE sebagai keputusan brand Dina Cake"
+      }
+    ]
   }
 }
