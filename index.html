@@ -5,14 +5,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Pratinjau pengembangan</title>
     <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="assets/js/main.js" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#konten-utama">Lewati ke konten utama</a>
+    <header class="site-header">
+      <div class="container header-layout">
+        <a class="wordmark" href="#hero" aria-label="Dina Cake — beranda">
+          <img class="brand-mark" src="assets/images/dina-cake-leaf-draft.svg" alt="" width="52" height="52" aria-hidden="true">
+          <span>Dina Cake</span>
+        </a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navigasi-utama" hidden>
+          <span class="menu-icon" aria-hidden="true"></span>
+          <span>Menu</span>
+        </button>
+        <nav class="site-nav" id="navigasi-utama" aria-label="Navigasi utama">
+          <ul class="nav-links">
+            <li><a href="#kue-harian">Kue Harian</a></li>
+            <li><a href="#pesanan-acara">Pesanan Acara</a></li>
+            <li><a href="#cara-pemesanan">Cara Pemesanan</a></li>
+            <li><a href="#tentang">Tentang</a></li>
+            <li><a href="#kontak">Kontak</a></li>
+          </ul>
+          <a class="button-cta navbar-cta" href="#kue-harian">
+            <svg class="navbar-cta__icon navbar-cta__leaf" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M6 21C7 16 10 9 17 3" fill="none" stroke="currentColor" stroke-width="1.6"/>
+              <path d="M8 16C3 15 2 10 3 7C8 8 10 12 8 16ZM12 11C11 6 14 3 19 2C19 7 17 10 12 11ZM10 18C11 14 15 12 20 12C18 16 15 18 10 18Z" fill="currentColor"/>
+            </svg>
+            <span class="navbar-cta__label">Lihat Kue</span>
+            <svg class="navbar-cta__icon navbar-cta__arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M5 12H19M14 7L19 12L14 17" fill="none" stroke="currentColor" stroke-width="1.7"/>
+            </svg>
+          </a>
+        </nav>
+      </div>
+    </header>
     <main id="konten-utama" tabindex="-1">
-      <section class="section" id="hero" aria-labelledby="judul-hero">
-        <div class="container">
-          <h1 id="judul-hero">Pratinjau pengembangan</h1>
-          <p class="development-note">Kerangka halaman untuk pengembangan internal. Belum untuk publikasi.</p>
+      <section class="section hero" id="hero" aria-labelledby="judul-hero">
+        <div class="hero-stage">
+          <div class="hero-visual">
+            <img class="hero-image" src="assets/images/hero/dina-cake.png" width="1672" height="941" fetchpriority="high" decoding="async" alt="Ilustrasi AI untuk prototipe: dua cucur, dua bakpao bertitik merah muda, dan satu pastel." aria-describedby="hero-image-note">
+          </div>
+          <div class="container hero-layout">
+            <div class="hero-copy">
+              <p class="hero-eyebrow">Pratinjau pengembangan</p>
+              <h1 id="judul-hero">Dina Cake <span>Dalam pengembangan</span></h1>
+              <p class="development-note">Tampilan sementara untuk review internal. Belum untuk publikasi.</p>
+              <a class="button-cta hero-cta" href="#kue-harian">
+                <svg class="hero-cta__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="M6 21C7 16 10 9 17 3" fill="none" stroke="currentColor" stroke-width="1.6"/>
+                  <path d="M8 16C3 15 2 10 3 7C8 8 10 12 8 16ZM12 11C11 6 14 3 19 2C19 7 17 10 12 11ZM10 18C11 14 15 12 20 12C18 16 15 18 10 18Z" fill="currentColor"/>
+                </svg>
+                <span>Lihat Kue</span>
+                <svg class="hero-cta__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="M5 12H19M14 7L19 12L14 17" fill="none" stroke="currentColor" stroke-width="1.7"/>
+                </svg>
+              </a>
+              <p class="hero-status" id="hero-image-note">Gambar AI untuk prototipe development. Bukan foto produk Dina Cake dan belum berizin publikasi.</p>
+            </div>
+          </div>
+        </div>
+        <div class="hero-details">
+          <ul class="container hero-feature-list" aria-label="Status materi prototipe">
+            <li>
+              <svg class="hero-feature-icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect x="5" y="6" width="22" height="20" rx="2"/><circle cx="21" cy="12" r="2"/><path d="M5 23L12 15L19 22L23 18L27 22"/></svg>
+              <div><p class="hero-feature-title">Foto produk</p><p class="hero-feature-description">Aset asli dan izin masih menunggu.</p></div>
+            </li>
+            <li>
+              <svg class="hero-feature-icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M7 8H25M16 8V25M11 25H21M7 8V12M25 8V12"/></svg>
+              <div><p class="hero-feature-title">Teks pengenalan</p><p class="hero-feature-description">Copy publik menunggu persetujuan.</p></div>
+            </li>
+            <li>
+              <svg class="hero-feature-icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect x="6" y="6" width="8" height="8" rx="1"/><rect x="18" y="6" width="8" height="8" rx="1"/><rect x="6" y="18" width="8" height="8" rx="1"/><rect x="18" y="18" width="8" height="8" rx="1"/></svg>
+              <div><p class="hero-feature-title">Informasi katalog</p><p class="hero-feature-description">Konten terverifikasi belum ditampilkan.</p></div>
+            </li>
+            <li>
+              <svg class="hero-feature-icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M7 7H25V22H16L9 27V22H7Z"/><path d="M11 12H21M11 17H18"/></svg>
+              <div><p class="hero-feature-title">Alur pemesanan</p><p class="hero-feature-description">Detail operasional menunggu konfirmasi.</p></div>
+            </li>
+          </ul>
         </div>
       </section>
       <section class="section section--surface" id="kue-harian" aria-labelledby="judul-kue-harian">

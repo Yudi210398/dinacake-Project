@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <title>DRAFT — simbol daun Dina Cake untuk review owner</title>
+  <desc>Simbol dekoratif sementara berdasarkan Navbar Design 2. Bukan logo final atau izin publikasi.</desc>
+  <g stroke="#315b46" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M29 59C32 44 37 28 46 13" fill="none"/>
+    <path d="M35 38C30 25 40 11 53 5C55 22 48 34 35 38Z" fill="#9caf93"/>
+    <path d="M36 36C42 26 48 16 52 7" fill="none"/>
+    <path d="M29 43C18 36 13 26 14 16C26 22 31 31 29 43Z" fill="#dce5d7"/>
+    <path d="M28 41L16 20" fill="none"/>
+    <path d="M25 55C13 54 5 44 4 31C18 35 24 43 25 55Z" fill="#7a956f"/>
+    <path d="M24 53L7 35" fill="none"/>
+    <path d="M35 55C42 44 53 41 60 40C56 51 47 56 35 55Z" fill="#9caf93"/>
+    <path d="M37 54L56 43M31 36C29 27 29 20 31 15" fill="none"/>
+  </g>
+  <circle cx="31" cy="10" r="5" fill="#f4d4c3"/>
+</svg>
