@@ -3,15 +3,33 @@
 (() => {
   const toggle = document.querySelector(".menu-toggle");
   const navigation = document.querySelector("#navigasi-utama");
+  const header = document.querySelector(".site-header");
 
-  if (!toggle || !navigation) return;
+  if (!toggle || !navigation || !header) return;
 
   // Keep this query aligned with the measured navigation breakpoint in CSS.
   const wideNavigation = window.matchMedia("(min-width: 60rem)");
 
+  function updateHeaderOffset() {
+    if (!navigation.hidden && !wideNavigation.matches) {
+      const availableHeight = Math.max(44, window.innerHeight - navigation.getBoundingClientRect().top - 8);
+      document.documentElement.style.setProperty("--menu-available-height", `${availableHeight}px`);
+      return;
+    }
+    document.documentElement.style.setProperty("--header-offset", `${header.getBoundingClientRect().height}px`);
+  }
+
+  function syncScrollState() {
+    const scrolled = window.scrollY > 4;
+    if (header.classList.contains("is-scrolled") !== scrolled) {
+      header.classList.toggle("is-scrolled", scrolled);
+    }
+  }
+
   function setExpanded(expanded) {
     toggle.setAttribute("aria-expanded", String(expanded));
     navigation.hidden = !expanded && !wideNavigation.matches;
+    updateHeaderOffset();
   }
 
   function syncViewport() {
@@ -51,5 +69,12 @@
   });
 
   wideNavigation.addEventListener("change", syncViewport);
+  window.addEventListener("scroll", syncScrollState, { passive: true });
+  window.addEventListener("pageshow", syncScrollState);
+  window.addEventListener("resize", updateHeaderOffset);
+  if ("ResizeObserver" in window) {
+    new ResizeObserver(updateHeaderOffset).observe(header);
+  }
   syncViewport();
+  syncScrollState();
 })();
