@@ -233,13 +233,132 @@
         </div>
       </section>
       <section
-        class="section section--surface"
+        class="section daily-cakes"
         id="kue-harian"
         aria-labelledby="judul-kue-harian"
       >
-        <div class="container">
-          <h2 id="judul-kue-harian">Kue Harian</h2>
-          <p>Konten produk belum ditampilkan.</p>
+        <svg class="daily-cakes__botanical" viewBox="0 0 160 240" aria-hidden="true" focusable="false">
+          <path d="M139 232C86 181 85 111 34 17" fill="none" stroke="currentColor" stroke-width="2" />
+          <path d="M122 209C77 213 47 189 39 162C79 161 109 176 122 209ZM105 174C114 130 137 112 157 109C156 143 138 169 105 174ZM88 140C47 145 23 123 16 99C51 98 77 111 88 140ZM72 106C81 68 103 49 124 45C123 78 103 101 72 106ZM53 65C21 67 5 48 1 28C28 28 46 39 53 65ZM39 32C32 12 40 2 49 0C58 14 54 26 39 32Z" fill="currentColor" />
+        </svg>
+        <svg class="daily-cakes__botanical daily-cakes__botanical--left" viewBox="0 0 160 240" aria-hidden="true" focusable="false">
+          <path d="M139 232C86 181 85 111 34 17" fill="none" stroke="currentColor" stroke-width="2" />
+          <path d="M122 209C77 213 47 189 39 162C79 161 109 176 122 209ZM105 174C114 130 137 112 157 109C156 143 138 169 105 174ZM88 140C47 145 23 123 16 99C51 98 77 111 88 140ZM72 106C81 68 103 49 124 45C123 78 103 101 72 106Z" fill="currentColor" />
+        </svg>
+        <div class="container daily-cakes__layout">
+          <div class="daily-cakes__intro">
+            <svg class="daily-cakes__emblem" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+              <path d="M20 34C9 34 4 24 4 15C13 15 19 21 20 34ZM20 34C31 34 36 24 36 15C27 15 21 21 20 34ZM20 27C11 18 16 8 20 3C24 8 29 18 20 27Z" />
+            </svg>
+            <h2 id="judul-kue-harian">Kue <span>Harian</span></h2>
+            <p class="daily-cakes__description">
+              Dari dapur rumah Mama Dina, aneka kue disiapkan untuk menemani
+              keseharian. Kenali pilihan kue rumahan yang selama ini hadir lewat
+              warung dan cerita dari mulut ke mulut.
+            </p>
+            <ul class="daily-cakes__status" aria-label="Sekilas Dina Cake">
+              <li>
+                <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M3 15 16 4 29 15M7 12V28H13V19H19V28H25V12" /></svg>
+                <span>Dari Dapur Rumah</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M5 13V28H27V13M3 12 6 4H26L29 12C27 17 22 17 20 12C18 17 14 17 12 12C10 17 5 17 3 12ZM10 28V21H16V28M21 20H24" /></svg>
+                <span>Dikenal Lewat Warung</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M28 15A12 12 0 0 1 10 26L3 29L5 22A12 12 0 1 1 28 15ZM11 9C8 14 16 23 21 20L22 17L18 15L16 17L13 14L14 12Z" /></svg>
+                <span>Tanya via WhatsApp</span>
+              </li>
+            </ul>
+          </div>
+          <article
+            class="daily-card daily-card--featured"
+            aria-labelledby="nama-kue-cucur"
+          >
+            <div class="daily-card__media">
+              <img
+                class="daily-card__image daily-card__image--kue-cucur"
+                src="assets/images/kue-harian/product/kue-cucur.png"
+                alt=""
+                width="800"
+                height="600"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="daily-card__draft">Dari Dapur Mama Dina</span>
+            </div>
+            <div class="daily-card__info">
+              <h3 id="nama-kue-cucur">Kue Cucur</h3>
+              <p>
+                Cokelat keemasan dengan bentuk bundar yang khas. Kue tradisional
+                yang membawa kesan hangat dan akrab dari dapur rumah.
+              </p>
+            </div>
+          </article>
+          <article class="daily-card" aria-labelledby="nama-bakpao">
+            <div class="daily-card__media">
+              <img
+                class="daily-card__image daily-card__image--bakpao"
+                src="assets/images/kue-harian/product/bakpao.png"
+                alt=""
+                width="800"
+                height="600"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="daily-card__info">
+              <h3 id="nama-bakpao">Bakpao</h3>
+              <p>
+                Roti kukus berbentuk bulat dengan kulit putih dan isian di
+                dalamnya. Pilihan camilan untuk menemani jeda di tengah kesibukan.
+              </p>
+            </div>
+          </article>
+          <article class="daily-card" aria-labelledby="nama-pastel">
+            <div class="daily-card__media">
+              <img
+                class="daily-card__image daily-card__image--pastel"
+                src="assets/images/kue-harian/product/pastel.png"
+                alt=""
+                width="800"
+                height="600"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="daily-card__info">
+              <h3 id="nama-pastel">Pastel</h3>
+              <p>
+                Kulit keemasan dengan lipatan pinggir yang khas. Camilan gurih
+                yang cocok menemani waktu santai maupun kebersamaan.
+              </p>
+            </div>
+          </article>
+          <article class="daily-card" aria-labelledby="nama-klepon">
+            <div class="daily-card__media">
+              <img
+                class="daily-card__image daily-card__image--klepon"
+                src="assets/images/kue-harian/product/dadar-gulung.png"
+                alt=""
+                width="800"
+                height="600"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="daily-card__info">
+              <h3 id="nama-klepon">Dadar Gulung</h3>
+              <p>
+                Balutan hijau yang digulung rapi dengan isian di bagian tengah.
+                Tampil sederhana, dengan warna yang khas dan menggugah selera.
+              </p>
+            </div>
+          </article>
+          <p class="daily-cakes__cta-pending">
+            Ada kue yang menarik perhatian? Tanyakan pilihan yang tersedia dan
+            detail pemesanan langsung kepada Mama Dina melalui WhatsApp.
+          </p>
         </div>
       </section>
       <section
@@ -253,13 +372,74 @@
         </div>
       </section>
       <section
-        class="section"
+        class="section ordering"
         id="cara-pemesanan"
         aria-labelledby="judul-cara-pemesanan"
       >
-        <div class="container">
-          <h2 id="judul-cara-pemesanan">Cara Pemesanan</h2>
-          <p>Alur pemesanan belum ditampilkan.</p>
+        <div class="container ordering__layout">
+          <header class="ordering__intro">
+            <p class="ordering__brand">DINA CAKE</p>
+            <h2 id="judul-cara-pemesanan">Cara <span>Pemesanan</span></h2>
+            <p>Pemesanan kue bisa dilakukan dengan mudah melalui WhatsApp. Ikuti langkah-langkah berikut agar pesanan Anda dapat diproses dengan baik.</p>
+          </header>
+          <ol class="ordering__steps">
+            <li class="order-step">
+              <div class="order-step__media">
+                <img src="assets/images/kue-harian/product-placeholder.svg" alt="Placeholder ilustrasi tangan memegang smartphone untuk menghubungi Mama Dina." width="800" height="600" loading="lazy" decoding="async" />
+                <svg class="order-step__icon" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><rect x="13" y="4" width="22" height="40" rx="4" /><path d="M21 9H27M21 38H27M19 18H29V28H19ZM22 21H26M22 25H26" /></svg>
+              </div>
+              <span class="order-step__number" aria-hidden="true">1</span>
+              <div class="order-step__copy">
+                <h3>Hubungi Mama Dina</h3>
+                <p>Kirim pesan melalui WhatsApp untuk memulai pemesanan.</p>
+              </div>
+            </li>
+            <li class="order-step">
+              <div class="order-step__media">
+                <img src="assets/images/kue-harian/product-placeholder.svg" alt="Placeholder ilustrasi tray pilihan kue." width="800" height="600" loading="lazy" decoding="async" />
+                <svg class="order-step__icon" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M5 19H43L39 39H9ZM8 19L14 8H34L40 19M13 26H35M14 32H34M19 8V19M29 8V19" /></svg>
+              </div>
+              <span class="order-step__number" aria-hidden="true">2</span>
+              <div class="order-step__copy">
+                <h3>Sampaikan Pilihan Kue</h3>
+                <p>Informasikan jenis kue, jumlah porsi, dan tanggal acara yang Anda inginkan.</p>
+              </div>
+            </li>
+            <li class="order-step">
+              <div class="order-step__media">
+                <img src="assets/images/kue-harian/product-placeholder.svg" alt="Placeholder ilustrasi kalender untuk konfirmasi jadwal." width="800" height="600" loading="lazy" decoding="async" />
+                <svg class="order-step__icon" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><rect x="5" y="9" width="38" height="34" rx="3" /><path d="M14 4V14M34 4V14M5 20H43M14 28H18M27 28H34M14 35H18M26 35L29 38L36 31" /></svg>
+              </div>
+              <span class="order-step__number" aria-hidden="true">3</span>
+              <div class="order-step__copy">
+                <h3>Konfirmasi dan Penjadwalan</h3>
+                <p>Mama Dina akan mengonfirmasi ketersediaan dan detail pesanan Anda.</p>
+              </div>
+            </li>
+            <li class="order-step">
+              <div class="order-step__media">
+                <img src="assets/images/kue-harian/product-placeholder.svg" alt="Placeholder ilustrasi kotak pesanan yang sudah siap." width="800" height="600" loading="lazy" decoding="async" />
+                <svg class="order-step__icon" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M5 16L24 6L43 16V36L24 45L5 36ZM5 16L24 26L43 16M24 26V45M15 11L34 21M18 33L23 37L32 28" /></svg>
+              </div>
+              <span class="order-step__number" aria-hidden="true">4</span>
+              <div class="order-step__copy">
+                <h3>Pesanan Disiapkan</h3>
+                <p>Kue akan disiapkan sesuai pesanan dan waktu yang telah disepakati.</p>
+              </div>
+            </li>
+          </ol>
+          <div class="ordering__contact">
+            <svg class="ordering__contact-icon" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M42 23A18 18 0 0 1 15 39L5 43L8 32A18 18 0 1 1 42 23ZM17 14C12 21 25 35 32 29L33 25L27 22L24 25L20 20L22 17Z" /></svg>
+            <div class="ordering__contact-copy">
+              <p class="ordering__label">SIAP MEMESAN?</p>
+              <h3>Chat Mama Dina melalui WhatsApp</h3>
+              <p>Tanyakan pilihan kue, ketersediaan tanggal, dan detail lainnya langsung kepada Mama Dina.</p>
+            </div>
+            <div class="ordering__action">
+              <a class="ordering__cta" href="#kontak" aria-describedby="ordering-contact-note"><span>Chat via WhatsApp</span><span aria-hidden="true">→</span></a>
+              <p id="ordering-contact-note">Nomor WhatsApp menunggu konfirmasi. Tautan menuju informasi Kontak.</p>
+            </div>
+          </div>
         </div>
       </section>
       <section

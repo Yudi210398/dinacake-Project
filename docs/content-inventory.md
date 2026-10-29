@@ -16,6 +16,30 @@
 
 Penempatan akhir tiap item pada “Kue Harian” atau “Pesanan Acara” **PENDING** konfirmasi Dina. Contoh produk di atas bukan daftar lengkap atau jaminan stok. Seluruh harga, satuan, varian, dan ketersediaan masih **PENDING** data dari Dina; klaim spesifiknya **BLOCKED** untuk publikasi sampai diverifikasi.
 
+## Refinement copy D-007 — 28 Oktober 2026
+
+Sumber: instruksi Decision Owner “D-007 Product Copy & Brand Story Refinement”.
+Owner mengizinkan penerapan copy DRAFT untuk review internal, bukan publikasi.
+Konteks yang diberikan owner: usaha kue rumahan Mama Dina, persiapan dari dapur
+rumah sejak dini hari, penitipan kue ke warung sejak pagi, serta pengenalan lewat
+rekomendasi dari mulut ke mulut dan WhatsApp. Izin Mama Dina untuk narasi usaha
+tetap **PENDING**; informasi pribadi/sensitif tidak dimasukkan ke copy.
+
+Copy header, badge “Dari Dapur Mama Dina”, deskripsi Kue Cucur, Bakpao, Pastel,
+dan Dadar Gulung, serta teks ajakan di bawah kartu pada `index.html` tetap
+**DRAFT**. Deskripsi bukan verifikasi bahan, resep, rasa, atau kualitas produk.
+Daftar aktif dan pengelompokan, termasuk Dadar Gulung yang kini ada di prototipe,
+menunggu konfirmasi Mama Dina. Dadar Gulung tidak menggantikan kandidat lain
+dalam inventaris sebagai keputusan katalog final.
+
+File gambar produk telah tersedia di `assets/images/kue-harian/product/` dan
+dipertahankan sesuai source owner. Ketersediaan file bukan bukti foto asli atau
+izin publikasi: asal, representasi produk, dan izin final tetap **PENDING**,
+publikasi **BLOCKED**. Copy DRAFT dan foto belum boleh masuk paket publik.
+Label developer dipindahkan dari UI ke catatan ini; penghapusannya tidak menaikkan
+status approval. Ajakan WhatsApp berupa teks tanpa tautan/nomor baru; tujuan CTA
+katalog dan nomor kontak berizin tetap menunggu keputusan yang relevan.
+
 ## Konten dan aset lintas halaman
 
 | Materi | Sumber/status saat ini | Konfirmasi yang dibutuhkan dan pemilik |
