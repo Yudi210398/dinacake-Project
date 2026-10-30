@@ -2209,3 +2209,80 @@ main:focus-visible {
     height: 56px;
   }
 }
+
+/* Navbar Option A: underline follows the label without changing its box. */
+.site-header .nav-links a {
+  width: fit-content;
+  max-width: 100%;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.45;
+  letter-spacing: normal;
+  color: var(--color-text);
+  text-decoration: none;
+  transition: color 120ms ease;
+}
+.nav-label { position: relative; min-width: 0; }
+.nav-label::after {
+  position: absolute;
+  inset: auto 0 -0.3rem;
+  height: 2px;
+  background: var(--color-accent);
+  content: "";
+  opacity: 0;
+}
+.site-header .nav-links a:hover,
+.site-header .nav-links a[aria-current="location"] {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+.nav-links a:hover .nav-label::after { height: 1px; opacity: 1; }
+.nav-links a[aria-current="location"] .nav-label::after { height: 2px; opacity: 1; }
+.has-js .site-header:not(.is-scrolled) .nav-links a { color: var(--color-surface); }
+.has-js .site-header:not(.is-scrolled) .nav-links a:hover,
+.has-js .site-header:not(.is-scrolled) .nav-links a[aria-current="location"] { color: var(--color-peach); }
+
+/* Compact feature row for phone layouts; wider layouts retain their baseline. */
+@media (max-width: 599px) {
+  #kue-harian .daily-cakes__status {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0;
+    margin-block-start: var(--space-4);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+  #kue-harian .daily-cakes__status li {
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: var(--space-2);
+    padding-inline: var(--space-1);
+  }
+  #kue-harian .daily-cakes__status li + li {
+    border-inline-start: 1px solid var(--color-peach);
+  }
+  #kue-harian .daily-cakes__status svg {
+    flex: 0 0 auto;
+    width: 3rem;
+    height: 3rem;
+    padding: 0.75rem;
+    border-radius: 50%;
+    background: var(--color-peach);
+  }
+  #kue-harian .daily-cakes__status span {
+    min-width: 0;
+    max-width: 100%;
+    text-align: center;
+    overflow-wrap: anywhere;
+  }
+  @container (max-width: 12em) {
+    #kue-harian .daily-cakes__status {
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--space-3);
+    }
+    #kue-harian .daily-cakes__status li + li {
+      border-inline-start: 0;
+    }
+  }
+}
