@@ -163,3 +163,69 @@
   syncScrollState();
   followHash();
 })();
+
+(() => {
+  const motionPreference = window.matchMedia?.("(prefers-reduced-motion: reduce)");
+  if (!motionPreference || motionPreference.matches || !("IntersectionObserver" in window)) return;
+
+  const targets = [...document.querySelectorAll("[data-editorial-reveal]")];
+  if (!targets.length) return;
+
+  let observer;
+
+  function reveal(target) {
+    if (!target.classList.contains("editorial-reveal--pending")) return;
+    target.classList.remove("editorial-reveal--pending");
+    target.classList.add("editorial-reveal--visible");
+    observer?.unobserve(target);
+  }
+
+  function revealAll() {
+    observer?.disconnect();
+    targets.forEach(reveal);
+  }
+
+  function revealHashSection() {
+    const section = document.getElementById(location.hash.slice(1));
+    if (section) section.querySelectorAll("[data-editorial-reveal]").forEach(reveal);
+  }
+
+  function revealVisibleTargets() {
+    targets.forEach((target) => {
+      const bounds = target.getBoundingClientRect();
+      if (bounds.bottom > 0 && bounds.top < innerHeight * 0.92) reveal(target);
+    });
+  }
+
+  try {
+    observer = new IntersectionObserver((entries) => {
+      try {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) reveal(entry.target);
+        });
+      } catch {
+        revealAll();
+      }
+    }, { threshold: 0.1, rootMargin: "0px 0px -8% 0px" });
+
+    const hashSection = document.getElementById(location.hash.slice(1));
+    targets.forEach((target) => {
+      const bounds = target.getBoundingClientRect();
+      if (hashSection?.contains(target) || (bounds.bottom > 0 && bounds.top < innerHeight * 0.92)) return;
+      target.classList.add("editorial-reveal--pending");
+      observer.observe(target);
+    });
+
+    window.addEventListener("hashchange", revealHashSection);
+    window.addEventListener("pageshow", revealVisibleTargets);
+    document.addEventListener("focusin", (event) => {
+      const target = event.target.closest?.("[data-editorial-reveal]");
+      if (target) reveal(target);
+    });
+    motionPreference.addEventListener?.("change", (event) => {
+      if (event.matches) revealAll();
+    });
+  } catch {
+    revealAll();
+  }
+})();
