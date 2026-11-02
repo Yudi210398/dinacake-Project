@@ -54,18 +54,6 @@
   border-block-start: 1px solid rgb(244 212 195 / 28%);
 }
 
-.site-footer__mark {
-  display: block;
-  width: 1.75rem;
-  height: 1.5rem;
-  margin-block-end: var(--space-1);
-  fill: none;
-  stroke: var(--color-peach);
-  stroke-width: 2.3;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
 .site-footer__brand h2,
 .site-footer__nav h2,
 .site-footer__contact h2 {
@@ -73,9 +61,16 @@
   line-height: 1.15;
 }
 
-.site-footer__brand h2 {
-  margin-block-end: var(--space-1);
-  font-size: clamp(2rem, 3vw, 2.625rem);
+.site-footer__logo {
+  width: 220px;
+  max-width: 100%;
+  margin-block-end: var(--space-2);
+}
+
+.site-footer__logo img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .site-footer__brand p {
