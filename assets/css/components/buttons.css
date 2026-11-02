@@ -1,0 +1,28 @@
+/* components/buttons.css — dipisahkan dari styles.css; urutan override lokal dipertahankan. */
+.button-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 44px;
+  padding: var(--space-2) var(--space-4);
+  border-radius: 2rem;
+  color: var(--color-cta-text);
+  background: var(--color-cta-background);
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+
+.button-cta:hover,
+.button-cta:active {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+}
+
+
+.button-cta {
+  background: var(--color-cta-background);
+  color: #231712;
+}

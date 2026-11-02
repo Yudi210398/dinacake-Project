@@ -1,0 +1,52 @@
+/* tokens.css — dipisahkan dari styles.css; urutan override lokal dipertahankan. */
+:root {
+  --color-background: #fff8ee;
+  --color-surface: #fffcf7;
+  --color-peach: #f4d4c3;
+  --color-sage: #dce5d7;
+  --color-text: #332d28;
+  --color-text-muted: #665a50;
+  --color-accent: #a54f36;
+  --color-brand: #315b46;
+  --color-focus: #315b46;
+  --color-cta-background: #fe7664;
+  --color-cta-text: #332d28;
+
+  --font-body: system-ui, sans-serif;
+  --font-heading: Georgia, serif;
+  --font-size-body: 1rem;
+  --font-size-h1: clamp(2rem, 5vw, 3.5rem);
+  --font-size-h2: clamp(1.5rem, 3vw, 2.25rem);
+  --line-height-body: 1.6;
+  --line-height-heading: 1.2;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2rem;
+  --space-6: 3rem;
+  --space-7: 4rem;
+  --container-max: 72rem;
+  --container-gutter: clamp(1rem, 4vw, 2rem);
+  --text-measure: 65ch;
+  --section-padding: var(--space-5);
+  --focus-width: 3px;
+  --focus-offset: 3px;
+}
+
+
+@media (min-width: 768px) {
+  :root {
+    --section-padding: var(--space-6);
+  }
+
+}
+
+
+@media (min-width: 1025px) {
+  :root {
+    --section-padding: var(--space-7);
+  }
+
+}

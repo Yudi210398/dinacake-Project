@@ -1,6 +1,63 @@
 "use strict";
 
 (() => {
+  const contactLinks = document.querySelectorAll("a[data-whatsapp-contact]");
+  if (!contactLinks.length) return;
+
+  function normalizePhone(value) {
+    if (typeof value !== "string") return null;
+    const input = value.trim();
+    if (!/^\+?[0-9 -]+$/.test(input)) return null;
+
+    let digits = input.replace(/[ +\-]/g, "");
+    if (!input.startsWith("+") && digits.startsWith("08")) {
+      digits = `62${digits.slice(1)}`;
+    }
+
+    // Format check only: account existence and publication consent require owner UAT.
+    return /^[1-9][0-9]{7,14}$/.test(digits) ? digits : null;
+  }
+
+  const phone = normalizePhone(window.DINA_CAKE_CONTACT_CONFIG?.inputNomorTelepon);
+  if (!phone) {
+    console.warn(
+      "Dina Cake: chat WhatsApp BLOCKED. Isi inputNomorTelepon di assets/js/contact-config.js dengan nomor resmi berformat valid. CTA tetap menuju informasi Kontak.",
+    );
+    return;
+  }
+
+  // Device hints, not viewport width. iPadOS may advertise a desktop Mac user agent.
+  const mobileDevice = navigator.userAgentData?.mobile === true
+    || /Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
+    || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  const href = mobileDevice
+    ? `https://wa.me/${phone}`
+    : `https://web.whatsapp.com/send?phone=${phone}`;
+
+  for (const link of contactLinks) {
+    link.href = href;
+    link.target = mobileDevice ? "_self" : "_blank";
+    if (!mobileDevice) link.rel = "noopener noreferrer";
+    if (link.dataset.whatsappLabel) link.setAttribute("aria-label", link.dataset.whatsappLabel);
+  }
+
+  const contactNote = document.getElementById("ordering-contact-note");
+  if (contactNote) {
+    contactNote.textContent = mobileDevice
+      ? "Lanjutkan percakapan melalui WhatsApp."
+      : "WhatsApp Web dibuka pada tab baru.";
+  }
+  const footerStatus = document.querySelector(".site-footer__pending");
+  if (footerStatus) footerStatus.textContent = "WhatsApp tersedia melalui tombol chat.";
+  const contactHint = document.getElementById("whatsapp-contact-hint");
+  if (contactHint) {
+    contactHint.textContent = mobileDevice
+      ? "Tautan WhatsApp dapat membuka aplikasi jika tersedia, atau dilanjutkan di browser. Gunakan Kembali untuk kembali ke Dina Cake."
+      : "Percakapan dibuka di WhatsApp Web pada tab baru. Halaman Dina Cake tetap terbuka.";
+  }
+})();
+
+(() => {
   const toggle = document.querySelector(".menu-toggle");
   const navigation = document.querySelector("#navigasi-utama");
   const header = document.querySelector(".site-header");

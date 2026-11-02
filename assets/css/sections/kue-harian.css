@@ -1,0 +1,515 @@
+/* sections/kue-harian.css — dipisahkan dari styles.css; urutan override lokal dipertahankan. */
+.daily-cakes {
+  position: relative;
+  isolation: isolate;
+  container-type: inline-size;
+  padding-block: var(--space-6);
+  background: var(--color-background);
+}
+
+
+.daily-cakes::before,
+.daily-cakes::after {
+  position: absolute;
+  z-index: -1;
+  width: clamp(5rem, 18vw, 17rem);
+  height: clamp(8rem, 24vw, 22rem);
+  border-radius: 0 0 85% 0;
+  background: var(--color-sage);
+  opacity: 0.55;
+  content: "";
+  pointer-events: none;
+}
+
+
+.daily-cakes::before {
+  inset: 0 0 auto auto;
+
+  border-radius: 0 0 0 85%;
+}
+
+.daily-cakes::after {
+  inset: auto auto 0 0;
+  background: var(--color-peach);
+}
+
+
+.daily-cakes__botanical {
+  position: absolute;
+  z-index: -1;
+  inset: 0 0 auto auto;
+  width: clamp(4rem, 13vw, 12rem);
+  height: auto;
+  color: var(--color-brand);
+  opacity: 0.14;
+  pointer-events: none;
+}
+
+
+.daily-cakes__botanical--left {
+  inset: auto auto 0 0;
+  transform: rotate(180deg);
+}
+
+
+.daily-cakes__layout {
+  display: grid;
+  max-width: 86rem;
+  gap: var(--space-4);
+}
+
+
+.daily-cakes__intro {
+  padding-block-end: var(--space-3);
+
+  text-align: center;
+}
+
+
+.daily-cakes__emblem {
+  display: block;
+  width: 2.25rem;
+  height: 2.25rem;
+  margin: 0 auto var(--space-3);
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 1.5;
+}
+
+
+.daily-cakes__intro h2 {
+  margin-block-end: var(--space-3);
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  line-height: 1.08;
+}
+
+
+.daily-cakes__intro h2 span {
+  color: var(--color-accent);
+}
+
+
+.daily-cakes__description {
+  max-width: 60ch;
+  margin-inline: auto;
+  color: var(--color-text);
+  font-size: 1.125rem;
+  line-height: 1.5;
+  text-wrap: balance;
+}
+
+
+.daily-cakes__status {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-3);
+  padding: 0;
+  margin-block: var(--space-4) 0;
+  list-style: none;
+  color: var(--color-text);
+  font-size: 1rem;
+}
+
+
+.daily-cakes__status li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-width: 0;
+}
+
+
+.daily-cakes__status svg {
+  flex: 0 0 2rem;
+  width: 2rem;
+  height: 2rem;
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+
+.daily-card {
+  display: grid;
+  grid-template-columns: minmax(0, 35%) minmax(0, 1fr);
+  min-width: 0;
+  border-radius: 1.25rem;
+  background: var(--color-surface);
+  box-shadow: 0 0.75rem 1.5rem rgb(102 90 80 / 12%);
+}
+
+
+.daily-card__media {
+  position: relative;
+  min-width: 0;
+  min-height: 9rem;
+  border-radius: 1.25rem 0 0 1.25rem;
+  overflow: hidden;
+  background: var(--color-sage);
+}
+
+
+.daily-card__image {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+.daily-card__info {
+  position: relative;
+  min-width: 0;
+  padding: var(--space-3);
+  align-self: center;
+}
+
+
+.daily-card__info h3 {
+  position: relative;
+  padding-inline-start: 2rem;
+  margin: 0 0 var(--space-3);
+  color: var(--color-brand);
+  font: 700 clamp(1.5rem, 1.8vw, 1.625rem) / 1.15 var(--font-heading);
+  overflow-wrap: anywhere;
+}
+
+
+.daily-card__info h3::before {
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 1.5rem;
+  height: 1.75rem;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40' fill='none' stroke='%23A54F36' stroke-width='1.5'%3E%3Cpath d='M20 34C9 34 4 24 4 15C13 15 19 21 20 34ZM20 34C31 34 36 24 36 15C27 15 21 21 20 34ZM20 27C11 18 16 8 20 3C24 8 29 18 20 27Z'/%3E%3C/svg%3E")
+    center / contain no-repeat;
+  content: "";
+}
+
+
+.daily-card__info p {
+  color: var(--color-text);
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+
+
+.daily-card--featured {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+
+.daily-card--featured .daily-card__media {
+  aspect-ratio: 4 / 3;
+  min-height: 0;
+  border-radius: 1.25rem 1.25rem 0 0;
+}
+
+
+.daily-card--featured .daily-card__image {
+  object-position: center 65%;
+}
+
+
+.daily-card--featured .daily-card__info {
+  padding: var(--space-4);
+  align-self: stretch;
+}
+
+
+.daily-card__info::before {
+  display: none;
+  position: absolute;
+  inset: -1.5rem 0 auto;
+  height: 1.5625rem;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 32' preserveAspectRatio='none'%3E%3Cpath fill='%23FFFCF7' d='M0 14C80 -20 200 50 400 14V32H0Z'/%3E%3C/svg%3E")
+    center / 100% 100% no-repeat;
+  content: "";
+  pointer-events: none;
+}
+
+
+.daily-card--featured .daily-card__info::before {
+  display: block;
+}
+
+
+.daily-card--featured h3 {
+  font-size: clamp(1.75rem, 2.5vw, 2rem);
+}
+
+
+.daily-card__draft {
+  position: absolute;
+  inset: var(--space-3) auto auto var(--space-3);
+  max-width: calc(100% - 2 * var(--space-3));
+  padding: var(--space-2) var(--space-3);
+  border-radius: 2rem;
+  color: var(--color-surface);
+  background: var(--color-brand);
+  font-size: 0.875rem;
+}
+
+
+.daily-cakes__cta-pending {
+  justify-self: center;
+  margin-block-start: var(--space-4);
+  color: var(--color-text);
+  font-size: 1rem;
+  line-height: 1.55;
+  text-align: center;
+  text-wrap: balance;
+}
+
+
+.daily-cakes__cta-pending::before {
+  display: block;
+  width: 8rem;
+  height: 1px;
+  margin: 0 auto var(--space-3);
+  background: var(--color-accent);
+  content: "";
+}
+
+
+@media (max-width: 359px) {
+  .daily-card {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .daily-card__media {
+    aspect-ratio: 4 / 3;
+    min-height: 0;
+    border-radius: 1.25rem 1.25rem 0 0;
+  }
+
+  .daily-card__info {
+    padding: var(--space-4);
+  }
+
+}
+
+
+@media (min-width: 64rem) {
+  .daily-cakes {
+    padding-block: var(--space-6);
+  }
+
+  .daily-cakes__layout {
+    grid-template-columns: minmax(0, 1.85fr) repeat(3, minmax(0, 1fr));
+    gap: var(--space-4);
+    align-items: stretch;
+  }
+
+  .daily-cakes__intro {
+    grid-column: 1 / -1;
+    padding-block-end: var(--space-3);
+  }
+
+  .daily-cakes__status {
+    margin-inline-start: 36%;
+    flex-wrap: nowrap;
+    gap: 0;
+  }
+
+  .daily-cakes__status li {
+    flex: 1 1 0;
+    padding-inline: var(--space-3);
+  }
+
+  .daily-cakes__status li + li {
+    border-inline-start: 1px solid var(--color-peach);
+  }
+
+  .daily-card {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+    align-self: stretch;
+  }
+
+  .daily-card__media {
+    aspect-ratio: 4 / 5;
+    min-height: 0;
+    border-radius: 1.25rem 1.25rem 0 0;
+  }
+
+  .daily-card__info {
+    padding: var(--space-4);
+    align-self: stretch;
+  }
+
+  .daily-card__info::before {
+    display: block;
+  }
+
+  .daily-card--featured {
+    grid-column: 1;
+    margin-block-start: calc(-1 * clamp(2rem, 5vw, 4.5rem));
+  }
+
+  .daily-card--featured .daily-card__media {
+    aspect-ratio: 5 / 4;
+  }
+
+  .daily-cakes__cta-pending {
+    grid-column: 1 / -1;
+  }
+
+}
+
+
+@container (max-width: 60em) {
+  .daily-cakes__layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .daily-cakes__intro,
+  .daily-cakes__cta-pending {
+    grid-column: auto;
+  }
+
+  .daily-cakes__status {
+    margin-inline-start: 0;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+
+  .daily-cakes__status li {
+    flex: 0 1 auto;
+    padding-inline: 0;
+  }
+
+  .daily-cakes__status li + li {
+    border-inline-start: 0;
+  }
+
+  .daily-card {
+    grid-template-columns: minmax(0, 35%) minmax(0, 1fr);
+    grid-template-rows: auto;
+  }
+
+  .daily-card__media {
+    aspect-ratio: auto;
+    min-height: 9rem;
+    border-radius: 1.25rem 0 0 1.25rem;
+  }
+
+  .daily-card__info {
+    padding: var(--space-3);
+    align-self: center;
+  }
+
+  .daily-card__info::before {
+    display: none;
+  }
+
+  .daily-card--featured {
+    grid-column: auto;
+    grid-template-columns: minmax(0, 1fr);
+    margin-block-start: 0;
+  }
+
+  .daily-card--featured .daily-card__media {
+    aspect-ratio: 4 / 3;
+    min-height: 0;
+    border-radius: 1.25rem 1.25rem 0 0;
+  }
+
+  .daily-card--featured .daily-card__info {
+    padding: var(--space-4);
+    align-self: stretch;
+  }
+
+  .daily-card--featured .daily-card__info::before {
+    display: block;
+  }
+
+}
+
+
+@container (max-width: 22em) {
+  .daily-card {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .daily-card__media {
+    aspect-ratio: 4 / 3;
+    min-height: 0;
+    border-radius: 1.25rem 1.25rem 0 0;
+  }
+
+  .daily-card__info {
+    padding: var(--space-4);
+  }
+
+  .daily-card__info::before {
+    display: block;
+  }
+
+
+  .daily-card__info h3 {
+    padding-inline-start: 0;
+    padding-block-start: 2.5rem;
+  }
+
+}
+
+
+/* Compact feature row for phone layouts; wider layouts retain their baseline. */
+@media (max-width: 599px) {
+  #kue-harian .daily-cakes__status {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0;
+    margin-block-start: var(--space-4);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  #kue-harian .daily-cakes__status li {
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: var(--space-2);
+    padding-inline: var(--space-1);
+  }
+
+  #kue-harian .daily-cakes__status li + li {
+    border-inline-start: 1px solid var(--color-peach);
+  }
+
+  #kue-harian .daily-cakes__status svg {
+    flex: 0 0 auto;
+    width: 3rem;
+    height: 3rem;
+    padding: 0.75rem;
+    border-radius: 50%;
+    background: var(--color-peach);
+  }
+
+  #kue-harian .daily-cakes__status span {
+    min-width: 0;
+    max-width: 100%;
+    text-align: center;
+    overflow-wrap: anywhere;
+  }
+
+  @container (max-width: 12em) {
+    #kue-harian .daily-cakes__status {
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--space-3);
+    }
+
+    #kue-harian .daily-cakes__status li + li {
+      border-inline-start: 0;
+    }
+
+}
+
+}
