@@ -101,7 +101,7 @@ main:focus-visible {
 
 .skip-link {
   position: fixed;
-  z-index: 1;
+  z-index: 60;
   inset-block-start: var(--space-3);
   inset-inline-start: var(--space-3);
   max-width: calc(100% - 2 * var(--space-3));

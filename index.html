@@ -3,7 +3,31 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Pratinjau pengembangan</title>
+    <title>Dina Cake | Kue Rumahan Mama Dina</title>
+    <meta
+      name="description"
+      content="Kenali pilihan kue rumahan dan hidangan untuk acara dari Dina Cake. Lihat menu, cerita Mama Dina, dan informasi cara pemesanan."
+    />
+    <meta property="og:title" content="Dina Cake | Kue Rumahan Mama Dina" />
+    <meta
+      property="og:description"
+      content="Kenali pilihan kue rumahan dan hidangan untuk acara dari Dina Cake. Lihat menu, cerita Mama Dina, dan informasi cara pemesanan."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Dina Cake" />
+    <meta property="og:locale" content="id_ID" />
+    <link
+      rel="icon"
+      href="assets/images/logo/favicon/favicon.ico"
+      sizes="16x16 32x32 48x48 64x64"
+      type="image/x-icon"
+    />
+    <link
+      rel="icon"
+      href="assets/images/logo/favicon/favicon-64.png"
+      sizes="64x64"
+      type="image/png"
+    />
     <script>
       document.documentElement.classList.add("has-js");
     </script>
@@ -21,6 +45,7 @@
     <link rel="stylesheet" href="assets/css/motion.css" />
     <script src="assets/js/contact-config.js" defer></script>
     <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/floating-whatsapp.js" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#konten-utama">Lewati ke konten utama</a>
@@ -570,7 +595,6 @@
               />
             </figure>
           </div>
-
         </div>
       </section>
       <section
@@ -835,7 +859,12 @@
           </nav>
           <div class="site-footer__contact">
             <h2>Hubungi Mama Dina</h2>
-            <div class="site-footer__contact-status">
+            <a class="site-footer__contact-status"
+              data-whatsapp-contact
+              role="link"
+              tabindex="0"
+              aria-disabled="true"
+              aria-describedby="footer-contact-note">
               <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false">
                 <path
                   d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.7-1.7A13 13 0 1 0 16 3Z"
@@ -845,8 +874,8 @@
                 />
               </svg>
               <span>WhatsApp Mama Dina</span>
-            </div>
-            <p class="site-footer__pending">Kontak resmi segera tersedia.</p>
+            </a>
+            <p class="site-footer__pending" id="footer-contact-note">Chat WhatsApp belum tersedia; kontak resmi menunggu konfirmasi.</p>
           </div>
         </div>
         <div class="site-footer__bottom">
@@ -871,8 +900,8 @@
       </svg>
     </a>
     <p id="whatsapp-contact-hint" class="visually-hidden">
-      Chat WhatsApp memerlukan JavaScript dan nomor resmi. Tautan cadangan menuju
-      informasi Kontak.
+      Chat WhatsApp memerlukan JavaScript dan nomor resmi. Tautan cadangan
+      menuju informasi Kontak.
     </p>
   </body>
 </html>
