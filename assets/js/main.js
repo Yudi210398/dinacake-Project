@@ -36,6 +36,7 @@
 
   for (const link of contactLinks) {
     link.href = href;
+    link.removeAttribute("aria-disabled");
     link.target = mobileDevice ? "_self" : "_blank";
     if (!mobileDevice) link.rel = "noopener noreferrer";
     if (link.dataset.whatsappLabel) link.setAttribute("aria-label", link.dataset.whatsappLabel);

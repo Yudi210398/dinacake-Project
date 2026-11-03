@@ -1,9 +1,10 @@
 /* components/floating-whatsapp.css — dipisahkan dari styles.css; urutan override lokal dipertahankan. */
 .floating-whatsapp {
-  position: fixed;
+  /* Safe in-flow fallback if JavaScript is unavailable, or focus needs docking. */
+  position: relative;
   z-index: 50;
-  right: max(24px, env(safe-area-inset-right));
-  bottom: max(24px, env(safe-area-inset-bottom));
+  margin: 1rem 1.5rem 1rem auto;
+  scroll-margin-block: 1rem;
   display: grid;
   place-items: center;
   width: 48px;
@@ -12,6 +13,19 @@
   background: #25d366;
   color: #fff;
   box-shadow: 0 6px 16px rgb(0 0 0 / 18%);
+}
+
+.floating-whatsapp.is-floating {
+  position: fixed;
+  right: max(24px, env(safe-area-inset-right));
+  bottom: max(24px, env(safe-area-inset-bottom));
+  margin: 0;
+}
+
+/* Keep the duplicate shortcut out of the way of readable content and controls. */
+.floating-whatsapp.is-obscured {
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .floating-whatsapp svg {
@@ -57,7 +71,7 @@
 
 /* Keep step text and the contact panel clear of the phone control rail. */
 @media (max-width: 430px) {
-  .floating-whatsapp {
+  .floating-whatsapp.is-floating {
     right: max(8px, env(safe-area-inset-right));
     bottom: max(8px, env(safe-area-inset-bottom));
   }
