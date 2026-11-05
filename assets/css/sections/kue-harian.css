@@ -513,3 +513,12 @@
 }
 
 }
+
+/* Eksperimen mobile: beri teks lebih banyak ruang pada kartu horizontal. */
+@media (max-width: 599px) {
+  @container (min-width: 22.01em) {
+    #kue-harian .daily-card:not(.daily-card--featured) {
+      grid-template-columns: minmax(0, 30%) minmax(0, 1fr);
+    }
+  }
+}
