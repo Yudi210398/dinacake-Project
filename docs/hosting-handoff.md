@@ -6,13 +6,12 @@ Tanggal inspeksi: 14 November 2026. Dokumen internal, tidak ikut document root.
 
 Dina Cake adalah single-page static website HTML5, CSS3, dan Vanilla JavaScript sesuai [ADR 001](adr/001-static-site.md). Tidak ada backend, database, build command, dependency install, atau environment variable runtime. Nomor kontak dibaca dari konfigurasi JS yang dikirim ke browser, bukan secret server. Jangan ubah nomor saat menyiapkan hosting tanpa instruksi owner.
 
-- Remote yang dikonfigurasi lokal: https://github.com/Yudi210398/dinacake-Project (akses/live sync belum terverifikasi).
-- Branch inspeksi: `fix/pesanan-acara-desktop-typography`.
-- Baseline HEAD: `e12cc99b94ea92d1af8ca1d6e8b07d6fd6afb7f3`.
-- Baseline HEAD dua commit di atas ref lokal `origin/main` (619d71b); ref branch tracking lokal cocok dengan HEAD. Ini bukan bukti GitHub live.
-- Branch belum memiliki upstream tracking yang dikonfigurasi. Owner perlu memeriksa target push secara eksplisit; keberadaan ref remote lokal tidak berarti upstream sudah diatur. Jika hosting mengambil main, owner perlu review dan integrasi lewat workflow PR/merge yang disepakati; jangan langsung mengasumsikan main siap.
-- Cleanup dan dokumen ini belum di-commit saat ditulis. SHA di atas tidak mencakup dokumen handoff ini. Owner menetapkan SHA kandidat setelah review/commit/push sendiri; developer wajib mencocokkan branch dan SHA tersebut. Jangan menganggap default branch versi terbaru.
-- Audit sebelumnya: LOCAL WORKSPACE VERIFIED; REMOTE SYNC NOT VERIFIED karena koneksi GitHub gagal. Kesimpulan technical handoff CONDITIONAL GO, public production NO-GO. Verifikasi ulang remote sebelum mengambil versi untuk hosting.
+- Repository: https://github.com/Yudi210398/dinacake-Project; koneksi dan HEAD remote diperiksa langsung pada 14 November 2026.
+- Branch aktif: `main`; upstream: `origin/main`. Tidak ada divergence pada baseline inspeksi.
+- Baseline hasil merge/source runtime yang diverifikasi: `42904677e747f7fbb4317629186a90598ec7211b`. HEAD lokal, `origin/main`, dan GitHub main cocok: **REMOTE COMMIT MATCH VERIFIED**.
+- PR #1 (`feat/dina-cake-final-polish`) dan PR #2 (`fix/pesanan-acara-desktop-typography`) sudah merged ke main. Seluruh commit kedua branch sudah tercakup; kedua remote feature branch dan branch fitur lokal yang masih ada telah dihapus. Setelah cleanup, hanya main yang tersisa sebagai branch lokal/remote.
+- Fix WhatsApp `9959b4d` dan dokumentasi handoff `8654115` sudah di-commit, di-push, dan termasuk hasil merge di atas; tidak lagi menunggu commit atau PR fitur. Sinkronisasi dokumentasi pasca-merge tidak mengubah runtime. SHA baseline di atas bukan klaim SHA commit dokumen ini sendiri: owner/developer harus mencatat SHA kandidat handoff terbaru yang memuat dokumen ini dan mencocokkannya dengan GitHub sebelum hosting.
+- Status REMOTE SYNC NOT VERIFIED pada audit lama adalah riwayat yang sudah digantikan verifikasi langsung di atas. Sinkronisasi merupakan hasil inspeksi pada waktu tersebut, bukan jaminan untuk perubahan berikutnya. Technical handoff tetap CONDITIONAL GO (SHA kandidat ditetapkan owner dan akses staging dibatasi), public production tetap NO-GO. Approval konten dan gate rilis tidak berubah.
 
 ## Runtime allowlist
 
