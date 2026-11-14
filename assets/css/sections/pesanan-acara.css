@@ -286,8 +286,53 @@
   }
 
   .event-orders__occasions li {
-    padding: 0.875rem 0.75rem;
-    font-size: 0.8125rem;
+    gap: 0.625rem;
+    padding: 1rem;
+    font-size: clamp(0.9375rem, 1.25vw, 1rem);
+    line-height: 1.45;
+  }
+
+  .event-orders__occasions svg {
+    flex-basis: 1.875rem;
+    width: 1.875rem;
+    height: 1.875rem;
+  }
+
+  .event-orders__intro > p {
+    max-width: 48ch;
+    font-size: clamp(1.1875rem, 1.5vw, 1.25rem);
+    line-height: 1.7;
+  }
+
+  .event-orders__categories {
+    gap: 1.25rem;
+  }
+
+  .event-orders__category {
+    gap: 1.25rem;
+    padding: 1.5rem;
+  }
+
+  .event-orders__category > svg {
+    flex-basis: 3.75rem;
+    width: 3.75rem;
+    height: 3.75rem;
+  }
+
+  .event-orders__category h3 {
+    margin-block-end: 0.5rem;
+    font-size: 1.875rem;
+    line-height: 1.2;
+  }
+
+  .event-orders__category p {
+    font-size: 1.125rem;
+    line-height: 1.65;
+  }
+
+  .event-orders__cta {
+    min-height: 3.75rem;
+    padding: 1rem 1.75rem;
   }
 
 }
@@ -340,7 +385,7 @@
 
 @media (min-width: 75rem) {
   .event-orders__occasions {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
