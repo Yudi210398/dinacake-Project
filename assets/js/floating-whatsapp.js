@@ -4,17 +4,21 @@
   const shortcut = document.querySelector(".floating-whatsapp");
   if (!shortcut) return;
 
-  const clearance = 16;
-  let protectedRects = [];
-  let refreshNeeded = true;
+  const gap = 8;
+  let collisionOffset = 0;
   let pendingFrame = false;
 
-  function collectProtectedRects() {
+  function collectProtectedRects(box) {
     const rects = [];
-    const addRect = (rect) => {
-      if (rect.width && rect.height) {
-        rects.push({ left: rect.left, right: rect.right,
-          top: rect.top + window.scrollY, bottom: rect.bottom + window.scrollY });
+    const addRect = (rect, element) => {
+      // Reveal text moves upward after scrolling stops; reserve its final position too.
+      const reveal = element.closest("[data-editorial-reveal]");
+      const transform = reveal && getComputedStyle(reveal).transform;
+      const shift = transform && transform !== "none"
+        ? Math.max(0, new DOMMatrixReadOnly(transform).m42) : 0;
+      if (rect.width && rect.height && rect.bottom > 0 && rect.top < window.innerHeight
+        && rect.left < box.right && rect.right > box.left) {
+        rects.push({ top: rect.top - shift, bottom: rect.bottom });
       }
     };
     const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
@@ -22,40 +26,38 @@
     let node;
     while ((node = walker.nextNode())) {
       if (!node.textContent.trim() || node.parentElement.closest(
-        "script, style, noscript, svg, .visually-hidden, .floating-whatsapp",
+        "script, style, noscript, svg, .visually-hidden, .floating-whatsapp, .site-header",
       )) continue;
+      const parentBox = node.parentElement.getBoundingClientRect();
+      if (!parentBox.width || parentBox.bottom < 0 || parentBox.top > window.innerHeight) continue;
       range.selectNodeContents(node);
-      for (const rect of range.getClientRects()) addRect(rect);
+      for (const rect of range.getClientRects()) addRect(rect, node.parentElement);
     }
     for (const control of document.querySelectorAll("a, button, input, select, textarea")) {
-      if (control !== shortcut && !control.closest(".visually-hidden")) {
-        addRect(control.getBoundingClientRect());
+      if (control !== shortcut && !control.closest(".visually-hidden, .site-header")) {
+        addRect(control.getBoundingClientRect(), control);
       }
     }
-    protectedRects = rects;
-    refreshNeeded = false;
+    return rects.sort((a, b) => b.bottom - a.bottom);
   }
 
   function updateVisibility() {
     pendingFrame = false;
-    // A focused shortcut stays in the document flow until focus leaves it.
-    if (!shortcut.classList.contains("is-floating")) return;
-    if (refreshNeeded) collectProtectedRects();
-    const box = shortcut.getBoundingClientRect();
-    const top = box.top + window.scrollY - clearance;
-    const bottom = box.bottom + window.scrollY + clearance;
     const menuOpen = document.querySelector('.menu-toggle[aria-expanded="true"]');
-    const overlaps = Boolean(menuOpen) || protectedRects.some((rect) =>
-      rect.left < box.right + clearance && rect.right > box.left - clearance
-      && rect.top < bottom && rect.bottom > top);
+    shortcut.classList.toggle("is-obscured", Boolean(menuOpen));
+    if (menuOpen) return;
 
-    if (overlaps && document.activeElement === shortcut) {
-      // Never hide a focused link. Its existing DOM position is after the footer.
-      shortcut.classList.remove("is-floating", "is-obscured");
-      shortcut.scrollIntoView({ block: "nearest", behavior: "instant" });
-      return;
+    const box = shortcut.getBoundingClientRect();
+    // Recover the CSS bottom-right baseline before resolving this frame's collisions.
+    const baselineBottom = box.bottom + collisionOffset;
+    let bottom = baselineBottom;
+    for (const rect of collectProtectedRects(box)) {
+      if (rect.top < bottom && rect.bottom > bottom - box.height) {
+        bottom = rect.top - gap;
+      }
     }
-    shortcut.classList.toggle("is-obscured", overlaps);
+    collisionOffset = Math.max(0, baselineBottom - bottom);
+    shortcut.style.setProperty("--whatsapp-collision-offset", `${collisionOffset}px`);
   }
 
   function scheduleUpdate() {
@@ -64,29 +66,24 @@
     requestAnimationFrame(updateVisibility);
   }
 
-  function refresh() {
-    refreshNeeded = true;
-    scheduleUpdate();
-  }
-
-  shortcut.addEventListener("blur", () => {
-    shortcut.classList.add("is-floating");
-    refresh();
-  });
   window.addEventListener("scroll", scheduleUpdate, { passive: true });
-  window.addEventListener("resize", refresh);
-  document.addEventListener("load", refresh, true);
-  document.querySelector(".menu-toggle")?.addEventListener("click", refresh);
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") refresh();
-  });
+  window.addEventListener("resize", scheduleUpdate);
+  window.visualViewport?.addEventListener("resize", scheduleUpdate);
+  document.addEventListener("load", scheduleUpdate, true);
+  document.addEventListener("transitionend", scheduleUpdate, true);
+  const toggle = document.querySelector(".menu-toggle");
+  if (toggle) {
+    new MutationObserver(scheduleUpdate).observe(toggle, {
+      attributes: true, attributeFilter: ["aria-expanded"],
+    });
+  }
   if ("ResizeObserver" in window) {
-    const observer = new ResizeObserver(refresh);
+    const observer = new ResizeObserver(scheduleUpdate);
     for (const element of document.querySelectorAll("main, footer, .site-header")) {
       observer.observe(element);
     }
   }
-  document.fonts?.ready.then(refresh);
+  document.fonts?.ready.then(scheduleUpdate);
   shortcut.classList.add("is-floating");
   updateVisibility();
 })();

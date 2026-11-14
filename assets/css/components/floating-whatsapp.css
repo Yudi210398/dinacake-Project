@@ -1,6 +1,6 @@
 /* components/floating-whatsapp.css — dipisahkan dari styles.css; urutan override lokal dipertahankan. */
 .floating-whatsapp {
-  /* Safe in-flow fallback if JavaScript is unavailable, or focus needs docking. */
+  /* Safe in-flow fallback if JavaScript is unavailable. */
   position: relative;
   z-index: 50;
   margin: 1rem 1.5rem 1rem auto;
@@ -18,11 +18,11 @@
 .floating-whatsapp.is-floating {
   position: fixed;
   right: max(24px, env(safe-area-inset-right));
-  bottom: max(24px, env(safe-area-inset-bottom));
+  bottom: calc(max(24px, env(safe-area-inset-bottom)) + var(--whatsapp-collision-offset, 0px));
   margin: 0;
 }
 
-/* Keep the duplicate shortcut out of the way of readable content and controls. */
+/* Only an open mobile navigation temporarily hides the shortcut. */
 .floating-whatsapp.is-obscured {
   visibility: hidden;
   pointer-events: none;
@@ -73,7 +73,7 @@
 @media (max-width: 430px) {
   .floating-whatsapp.is-floating {
     right: max(8px, env(safe-area-inset-right));
-    bottom: max(8px, env(safe-area-inset-bottom));
+    bottom: calc(max(8px, env(safe-area-inset-bottom)) + var(--whatsapp-collision-offset, 0px));
   }
 
 }
