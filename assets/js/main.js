@@ -30,9 +30,10 @@
   const mobileDevice = navigator.userAgentData?.mobile === true
     || /Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
     || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  const encodedMessage = encodeURIComponent("Halo Mama Dina, saya mau pesan kue 😊");
   const href = mobileDevice
-    ? `https://wa.me/${phone}`
-    : `https://web.whatsapp.com/send?phone=${phone}`;
+    ? `https://wa.me/${phone}?text=${encodedMessage}`
+    : `https://web.whatsapp.com/send?phone=${phone}&text=${encodedMessage}`;
 
   for (const link of contactLinks) {
     link.href = href;
